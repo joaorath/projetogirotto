@@ -32,7 +32,11 @@ void menuPrincipal(){
 				printf("&:simbolo que representa o jogador\n*:simbolo que representa paredes (o jogador nao consegue atravessa-las)\n");
 				printf("@:simbolo que representa a chave para abrir a porta e finalizar a chave\nD:simbolo que representa uma porta fechada\n");
 				printf("=:simbolo que representa uma porta aberta\n0:simbolo que representa um botao interativo\n#:simbolo que representa um espinho\n");
-				printf(">:simbolo que representa um teletransporte\nX:simbolo que representa o monstro nivel 1\nV:simbolo que representa o monstro nivel 2");
+				printf(">:simbolo que representa um teletransporte\nX:simbolo que representa o monstro nivel 1\nV:simbolo que representa o monstro nivel 2\n");
+				printf("Pressione qualquer tecla para voltar ao menu principal!");
+				getch();
+				system("cls");
+				menuPrincipal();
 			break;
 			case 3:
 				//Encerramento do jogo
@@ -43,7 +47,6 @@ void menuPrincipal(){
 void iniciarJogo(){
 	system("cls");
         //Declaracao de variaveis
-        srand(time(0));
         int x1 = 1;
         int y1 = 1;
         int getKey = 0;
