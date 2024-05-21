@@ -12,62 +12,6 @@
 			#define largura3 40
 			
 			
-			
-			//Funcao para imprimir o mapa
-			void printmap(char mapa[altura][largura], int px, int py){
-			system("cls");
-			
-			    int i, j;
-			
-			    for (i = 0; i < altura; i++) {
-			        for (j = 0; j < largura; j++) {
-			            if (i == py && j == px) {
-			                printf("&");
-			            } else {
-			                printf("%c", mapa[i][j]);
-			            }
-			        }
-			        printf("\n");
-			    }
-			}
-			//Funcao para imprimir o segundo mapa
-			void printmap2(char mapa2[altura2][largura2], int px2, int py2, int monstroY, int monstroX){
-			system("cls");
-			    int i2, j2;
-			
-			    for (i2 = 0; i2 < altura2; i2++) {
-			        for (j2 = 0; j2 < largura2; j2++) {
-			            if (i2 == py2 && j2 == px2) {
-			                printf("&");
-			            }else if(i2 == monstroY && j2 == monstroX ){
-			            printf("X");
-			} else {
-			                printf("%c", mapa2[i2][j2]);
-			            }
-			        }
-			        printf("\n");
-			    }
-			}
-			
-			//FUNCAO MAPA3------------------------------------------------------------------------------------------------------
-			void printmap3(char mapa3[altura3][largura3], int px3, int py3, int monstroX2, int monstroY2, int seguidorX, int seguidorY){
-			system("cls");
-			int i3,j3;
-			for(i3=0;i3<altura3;i3++){
-			for(j3=0;j3<largura3;j3++){
-			if(i3 == py3 && j3 == px3){
-			printf("&");
-			}else if(i3 == monstroY2 && j3 == monstroX2){
-			printf("X");
-			}else if(i3 == seguidorY && j3 == seguidorX){
-			printf("V");
-			}else {
-			printf("%c", mapa3[i3][j3]);
-			}
-			}
-			printf("\n");
-			}
-			}
         //FUNCAO MENU
 			int numero;
 	void menu(){
@@ -368,6 +312,293 @@ printmap2(mapa2,x2,y2, monstroX, monstroY);
 			}}
 }
 void fase3(){
-
+int choice3 = 1;
+system("cls");
+printf("\t\t\t\t\t\t\tCarregando a terceira fase...");
+sleep(2);
+char mapa3[altura3][largura3] = {
+			
+			"****************************************",
+			"*          *                #          *",
+			"*          *                           *",
+			"*          *                  **  ******",
+			"*      #   *            ******** D *****",
+			"*          *            ****************",
+			"*   #      *            ****************",
+			"*          *            *********##*****",
+			"*      #   *                           *",
+			"*          *                           *",
+			"*    #     *                           *",
+			"*          ***************             *",
+			"*       #                              *",
+			"*                                      *",
+			"*          ************************    *",
+			"********                 #             *",
+			"*          ***************             *",
+			"*                        *             *",
+			"********                 *             *",
+			"*                       O*             *",
+			"*          ***************             *",
+			"****************        ****************",
+			"*          *                           *",
+			"*      #   *                           *",
+			"*          *                           *",
+			"*   #      *                           *",
+			"*          *                           *",
+			"*       #  *                           *",
+			"*          *                           *",
+			"*          *                           *",
+			"*    #     *                           *",
+			"*#        #*                           *",
+			"*       #  *                           *",
+			"*          *                           *",
+			"*          *                          >*",
+			"*     #    *            ****************",
+			"*                      *               *",
+			"*                      *               *",
+			"*                      *<             @*",
+			"****************************************"
+			};
+			
+//variavel do espinho
+			int espinho2 = 3;
+//coordenadas do primeiro monstro
+			int monstroX2 = 27;
+			int monstroY2 = 32;
+//coordenadas do segundo monstro
+			int seguidorX = 1;
+			int seguidorY = 1;
+//variavel do teletransporte
+			int teleX = 38;
+			int teleY = 34;
+			int teleX2 = 24;
+			int teleY2 = 38;
+			
+//posição jogador
+			int x3 = 3;
+			int y3 = 1;
+//variavel da chave
+			int pegouChave3 = 0;
+//variavel para representar a porta
+			int portaAberta3 = 0;
+//variavel para representar o botao
+			int botao2 = 0;
+while(choice3==1){
+system("cls");
+//print do mapa
+			printmap3(mapa3, x3, y3, monstroX2, monstroY2, seguidorX, seguidorY);
+			
+//movimento
+			char move3 = getch();
+			
+	switch(move3){
+			case'w':
+		{
+	if(y3 > 1 && mapa3[y3-1][x3] != '*' && mapa3[y3-1][x3] != 'D' && seguidorY > 1 && mapa3[seguidorY-1][seguidorX] != '*' && mapa3[seguidorY-1][seguidorX]!= 'D')
+			y3--;
+			seguidorY--;
+			break;
+	}
+			case's':
+	{
+	if(y3<altura3 - 2 && mapa3[y3 + 1][x3] != '*' && mapa3[y3+1][x3] != 'D' && seguidorY < altura3 - 2 && mapa3[seguidorY+1][seguidorX] != '*' && mapa3[seguidorY+1][seguidorX]!= 'D')
+			y3++;
+			seguidorY++;
+			break;
+	}
+			case'a':
+	{
+	if(x3 > 1 && mapa3[y3][x3-1] != '*' && mapa3[y3][x3 - 1] != 'D' && seguidorX > 1 && mapa3[seguidorY][seguidorX-1] != '*' && mapa3[seguidorY][seguidorX-1]!= 'D')
+			x3--;
+			seguidorX--;
+			break;
+	}
+			case 'd':
+	{
+	if(x3<largura3 - 2 && mapa3[y3][x3+1] != '*' && mapa3[y3][x3+1] != 'D' && seguidorX < largura3 - 2 && mapa3[seguidorY][seguidorX+1] != '*' && mapa3[seguidorY][seguidorX+1]!= 'D')
+			x3++;
+			seguidorX++;
+			break;
+	}
+			
+//pegar a chave
+			case 'i':
+			if (mapa3[y3][x3] == '@'){
+			pegouChave3 = 1;
+			            mapa3[y3][x3] = ' ';
+			}else if(mapa3[y3][x3] == 'O'){
+			botao2 = 1;
+			mapa3[21][4] = ' ';
+			mapa3[21][3] = ' ';
+			mapa3[21][2] = ' ';
+			mapa3[21][27] = ' ';
+			mapa3[21][28] = ' ';
+			mapa3[21][29] = ' ';
+			}      
+			            break;
+			}
+//abertura da porta
+			if(pegouChave3 == 1){
+			if(move3 == 'w' && mapa3[y3-1][x3] == 'D'){
+			portaAberta3 = 1;
+			mapa3[y3 - 1][x3] = '=';
+			}else if(move3 == 's' && mapa3[y3+1][x3] == 'D'){
+			portaAberta3 = 1;
+			mapa3[y3 + 1][x3] = '=';
+			}else if(move3 == 'a' && mapa3[y3][x3-1] == 'D'){
+			portaAberta3 = 1;
+			mapa2[y3][x3- 1] = '=';
+			}else if(move3 == 'd' && mapa3[y3][x3+1] == 'D'){
+			portaAberta3 = 1;
+			mapa3[y3][x3 + 1] = '=';
+			}}
+//espinho
+			if(mapa3[y3][x3] == '#'){
+			espinho2--;
+			printf("VOCE CAIU NO ESPINHO VIDAS RESTANTES: %d\n", espinho2);
+			if(espinho2 == 0){
+			system("cls");
+			printf("\t\t\t\t\t\t\t\t\tGAME OVER\n");
+			printf("PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU PRINCIPAL");
+			getch();
+			system("cls");
+			sleep(1);
+			menu();
+			}else{
+			printf("\t\t\t\t\t\t\t\t\tPRESSIONE QUALQUER TECLA PARA CONTINUAR...");
+			getch();
+			x3 = 3;
+			y3 = 1;
+			seguidorX = 1;
+			seguidorY = 1;
+			}
+			}
+//movimento monstro
+			int monstro2 = rand()%4;// 0 cima, 1 baixo, 2 esquerda, 3 direita
+			
+			switch(monstro2){
+			case 0:
+			{
+			if(monstroY2 > 1 && mapa3[monstroY2-1][monstroX2] != '*' && mapa3[monstroY2-1][monstroX2] != 'D')
+			monstroY2--;
+			break;
+			}
+			case 1:
+			{
+			if(monstroY2<altura3 - 2 && mapa3[monstroY2 + 1][monstroX2] != '*' && mapa3[monstroY2+1][monstroX2] != 'D')
+			monstroY2++;
+			break;
+			}
+			case 2:
+			{
+			if(monstroX2 > 1 && mapa3[monstroY2][monstroX2-1] != '*' && mapa3[monstroY2][monstroX2 - 1] != 'D')
+			monstroX2--;
+			break;
+			}
+			case 3:
+			{
+			if(monstroX2<largura3 - 2 && mapa3[monstroY2][monstroX2+1] != '*' && mapa3[monstroY2][monstroX2+1] != 'D')
+			monstroX2++;
+			break;
+			}
+			
+			}
+			if(y3 == monstroX2 && x3 == monstroY2 ){
+			system("cls");
+			printf("\t\t\t\t\t\t\t\t\tVOCE MORREU PARA O MONSTRO :(");
+			sleep(2);
+			menu();
+			}
+//Movimento seguidor
+			if(y3 == seguidorX && x3 == seguidorY ){
+			system("cls");
+			printf("\t\t\t\t\t\t\t\t\tVOCE MORREU PARA O SEGUIDOR :(");
+			sleep(2);
+			menu();
+			}
+//Teletransporte
+		if(mapa3[y3][x3] == mapa3[34][38] && mapa3[seguidorY][seguidorX]){
+			getch();
+			x3 = 24;
+			y3 = 38;
+			seguidorX = 24;
+			seguidorY = 38;
+		}else if(mapa3[y3][x3] == mapa3[38][24] && mapa3[seguidorY][seguidorX]){
+			getch();
+			x3 = 38;
+			y3 = 34;
+			seguidorX = 38;
+			seguidorY = 34;
+		}
+//Finalizacao da terceira fase
+			if(portaAberta3 && mapa3[y3][x3] == '='){
+			system("cls");
+			printf("\t\t\t\tParabens!!! Voce concluiu a terceira fase!\n\t\t\t\t\t\t\t\t\tParabens por ter zerado o nosso jogo, aposto que nao foi facil!!!!\n");
+			sleep(1);
+			printf("\t\t\t\t\t\t\t\t\tAperte qualquer tecla para voltar pro menu principal");
+			menu();
+			system("cls"); }
+}
+}
+void jogo(){
+	fase3();
+}
+//Funcao para imprimir o mapa
+			void printmap(char mapa[altura][largura], int px, int py){
+			system("cls");
+			
+			    int i, j;
+			
+			    for (i = 0; i < altura; i++) {
+			        for (j = 0; j < largura; j++) {
+			            if (i == py && j == px) {
+			                printf("&");
+			            } else {
+			                printf("%c", mapa[i][j]);
+			            }
+			        }
+			        printf("\n");
+			    }
+			}
+			//Funcao para imprimir o segundo mapa
+			void printmap2(char mapa2[altura2][largura2], int px2, int py2, int monstroY, int monstroX){
+			system("cls");
+			    int i2, j2;
+			
+			    for (i2 = 0; i2 < altura2; i2++) {
+			        for (j2 = 0; j2 < largura2; j2++) {
+			            if (i2 == py2 && j2 == px2) {
+			                printf("&");
+			            }else if(i2 == monstroY && j2 == monstroX ){
+			            printf("X");
+			} else {
+			                printf("%c", mapa2[i2][j2]);
+			            }
+			        }
+			        printf("\n");
+			    }
+			}
+//FUNCAO MAPA3------------------------------------------------------------------------------------------------------
+			void printmap3(char mapa3[altura3][largura3], int px3, int py3, int monstroX2, int monstroY2, int seguidorX, int seguidorY){
+			system("cls");
+			int i3,j3;
+			for(i3=0;i3<altura3;i3++){
+			for(j3=0;j3<largura3;j3++){
+			if(i3 == py3 && j3 == px3){
+			printf("&");
+			}else if(i3 == monstroY2 && j3 == monstroX2){
+			printf("X");
+			}else if(i3 == seguidorY && j3 == seguidorX){
+			printf("V");
+			}else {
+			printf("%c", mapa3[i3][j3]);
+			}
+			}
+			printf("\n");
+			}
+			}
+int main(){
+//menu
+menu();
 }
 }
