@@ -44,77 +44,33 @@ void menuPrincipal(){
 			break;
 		}
 }
-void iniciarJogo(){
+void fase1(){
 	system("cls");
-        //Declaracao de variaveis
-        int x1 = 1;
-        int y1 = 1;
-        int getKey = 0;
-        int openDoor = 0;
-        //Mapa (1)
-        char map1[map1_height][map1_width] = {
-				"**********",
-				"* *      *",
-				"*   *** D*",
-				"***  ** **",
-				"***  *****",
-				"***  ** **",
-				"***      *",
-				"***  ** **",
-				"***  **@**",
-				"**********"	
-			};
-        //Mapa (2)
-        char mapa2[mapa2_height][mapa2_width] = {		
-				"********************",
-				"*                 D*",
-				"*  ******** ********",
-				"*  ******** *****  *",
-				"*           #      *",
-				"***  ***********   *",
-				"*** ****************",
-				"*** *************  *",
-				"*** *************  *",
-				"**    *********   **",
-				"***     ******    **",
-				"**       *****   ***",
-				"**       *****    **",
-				"**     X   *       *",
-				"***      *****    **",
-				"*****    ****    ***",
-				"***     *****     **",
-				"*        ******    *",
-				"*O     *******    @*",
-				"********************"
-				};
-        //Mapa (2)
-        char map3[map3_height][map3_width] = {		
-				"****************************************",
-				"*     **********************************",
-				"**         ********      #     *********",
-				"**                  #              *****",
-				"**             *********             ***",
-				"***           ************           ***",
-				"********   **************  #          **",
-				"*******   *************            *****",
-				"******* ***********      ***************",
-				"**************          ****************",
-				"****      *****  O      *   ************",
-				"****  @   ***************   ************",
-				"****      ************    # ************",
-				"*********************      *******D >***",
-				"*******       ******    ****************",
-				"*            #         *****************",
-				"* # ****        ************************",
-				"*     **********************************",
-				"*                                    >**",
-				"****************************************"
-				};
+
+    //Declaracao de variaveis
+    int x1 = 1;
+    int y1 = 1;
+    int getKey = 0;
+    int openDoor = 0;
+
+    //Mapa (1)
+    char map1[map1_height][map1_width] = {
+			"**********",
+			"* *      *",
+			"*   *** D*",
+			"***  ** **",
+			"***  *****",
+			"***  ** **",
+			"***      *",
+			"***  ** **",
+			"***  **@**",
+			"**********"	
+	};
 //---------------------------------------------------------------------------------------------------------------------------------------------					
-		//Fase (1)		
-        while(choice == 1){
-            system("cls");
-            //Printando o Mapa(1) e a localizacao do Personagem
+		//Fase (1)
+		while (choice == 1){
+			system("cls");
+            //Printando o Mapa(1) e a Localizacao do Personagem
 			printMap1(map1, x1, y1);
             //Movimento Personagem Fase 1
             char movePlayer1 = getch();
@@ -163,39 +119,67 @@ void iniciarJogo(){
 				system("cls");
 				printf("\t\t\t\t\tParabens!!! Fase (1) Completa!\n");
 				sleep(1);
-			break;
+				system("cls");
+				sleep(1);
+				int choice;
+				printf("Voce deseja ir para a Fase (2) ?(1 - SIM | 2 - NAO)");
+				scanf("%d", &choice);
+				if (choice == 1){
+					fase2();
+				}else if(choice == 2){
+					menuPrincipal();
+				}
 			}
-        }
-//---------------------------------------------------------------------------------------------------------------------------------------------	
+		}	     
+    }
+
+void fase2(){
+	int choice2 = 1;
+	printf("\t\t\t\t\tCarregando a Fase (2)...");
+	sleep(2);
+	system("cls");
+	//Mapa (2)
+    char mapa2[mapa2_height][mapa2_width] = {		
+			"********************",
+			"*                 D*",
+			"*  ******** ********",
+			"*  ******** *****  *",
+			"*           #      *",
+			"*** *************  *",
+			"*** *************  *",
+			"*** *************  *",
+			"*** *************  *",
+			"*       *          *",
+			"*  #    *          *",
+			"*       *          *",
+			"*    #  *          *",
+			"*       *          *",
+			"* #     *          *",
+			"*     # *          *",
+			"*       *          *",
+			"* #     *          *",
+			"*O      *         @*",
+			"********************"
+	};
+	//---------------------------------------------------------------------------------------------------------------------------------------------	
 		//Fase (2)
-            system("cls");
-
-            int choice2;
-            sleep(1);
-            printf("Voce deseja ir para a Fase (2) ?(1 - SIM | 2 - NAO)");
-			scanf("%d", &choice2);
-
-            if(choice2 == 1){
-                system("cls");
-					printf("\t\t\t\t\tCarregando a Fase (2)...");
-					sleep(2);
-            }
-
             //Declaracao Variaveis Fase(2)
+
             int x2 = 1;
             int y2 = 1;
             int getKey2 = 0;
             int openDoor2 = 0;
             int button1 = 0;
             int spike1 = 3;
+			int my2 = 12;
+			int mx2 = 15;
 
 			//Fase (2)
-            while(choice2 == 1){
+			while (choice2 == 1){
 				system("cls");
                 //Printando Mapa (2)
-
-                printMapa2(mapa2, x2, y2);
-                //Movimento Personagem Fase 1
+                printMapa2(mapa2, x2, y2, mx2, my2);
+                //Movimento Personagem Fase 2
             	char movePlayer2 = getch();
 				switch(movePlayer2){
 					case'w':
@@ -221,8 +205,7 @@ void iniciarJogo(){
 							mapa2[y2][x2] = ' ';
 						}else if(mapa2[y2][x2] == 'O'){
 								button1 = 1;
-								mapa2[6][18] = ' ';
-								mapa2[13][11] = ' ';
+								mapa2[12][8] = ' ';
 						}             
 						break;	
 				}
@@ -233,7 +216,7 @@ void iniciarJogo(){
 							mapa2[y2 - 1][x2] = '=';
 						}else if(movePlayer2 == 's' && mapa2[y2+1][x2] == 'D'){
 							openDoor2 = 1;
-							mapa2[y2 + 1][x2] = '=';
+							mapa2[x2 + 1][y2] = '=';
 						}else if(movePlayer2 == 'a' && mapa2[y2][x2-1] == 'D'){
 							openDoor2 = 1;
 							mapa2[y2][x2- 1] = '=';
@@ -255,7 +238,6 @@ void iniciarJogo(){
 							system("cls");
 							sleep(1);
 							menuPrincipal();
-							break;
 						}else{
 							printf("PRESSIONE QUALQUER TECLA PARA CONTINUAR...");
 							getch();
@@ -264,31 +246,107 @@ void iniciarJogo(){
 						}
 					}
 					//Monstro Fase (2)
+						int random = rand()%4;
+						switch (random){
+							case 0:{
+								if(my2 > 1 && mapa2[my2-1][mx2] != '*' && mapa2[my2-1][mx2] != 'D') 
+								my2--;
+								break;
+							}
+							case 1: {
+								if(my2<mapa2_height - 2 && mapa2[my2 + 1][mx2] != '*' && mapa2[my2+1][mx2] != 'D')
+								my2++;
+								break;
+							}
+							case 2:{
+								if(mx2 > 1 && mapa2[my2][mx2-1] != '*' && mapa2[my2][mx2 - 1] != 'D')
+								my2--;
+								break;
+							}
+							case 3:{
+								if(mx2<mapa2_width - 2 && mapa2[my2][mx2+1] != '*' && mapa2[my2][mx2+1] != 'D')
+								mx2++;
+								break;
+							}
+						}
 						
+								
+						if(x2 == mx2 && y2 == my2 ){
+							system("cls");
+							printf("VOCE MORREU PARA O MONSTRO :(");
+						}	
+
 					//Finalizacao da Fase (2)
 					if(openDoor2 && mapa2[y2][x2] == '='){
 						system("cls");
 						printf("\t\t\t\t\tParabens!!! Voce concluiu a Fase (2)!\n");
 						sleep(1);
-					break;
-					}
 						system("cls");
-			}
+						sleep(1);
+						int choice;
+						printf("Voce deseja ir para a Fase (2) ?(1 - SIM | 2 - NAO)");
+						scanf("%d", &choice);
+						if (choice == 1){
+							fase3();
+						}else if(choice == 2){
+							menuPrincipal();
+						}
+					}
+			}		
+	}
+
+void fase3(){
+	int choice3 = 1;
+	system("cls");
+	printf("\t\t\t\t\tCarregando a Fase (3)...");
+	sleep(2);
+	//Mapa (3)
+        char map3[map3_height][map3_width] = {
+
+				"****************************************",
+				"*          *           >    #          *",
+				"*          *                           *",
+				"*          *                  **  ******",
+				"*      #   *            ******** D *****",
+				"*          *            ****************",
+				"*   #      *            ****************",
+				"*          *            *********##*****",
+				"*      #   *                           *",
+				"*          *                           *",
+				"*    #     *                           *",
+				"*          ***************             *",
+				"*       #                              *",
+				"*                                      *",
+				"*          ************************    *",
+				"********                 #>            *",
+				"*          ***************             *",
+				"*                        *             *",
+				"********                 *             *",
+				"*                       O*             *",
+				"*          ***************             *",
+				"****************            ************",
+				"*          *                           *",
+				"*      #   *                           *",
+				"*          *                           *",
+				"*   #      *                           *",
+				"*          *                           *",
+				"*       #  *                           *",
+				"*          *                           *",
+				"*          *                           *",
+				"*    #     *                           *",
+				"*#        #*                           *",
+				"*       #  *                           *",
+				"*          *                           *",
+				"*          *                           *",
+				"*     #    *            ****************",
+				"*                      *               *",
+				"*                      *               *",
+				"*>                     *>             @*",
+				"****************************************"
+		};
+
 //---------------------------------------------------------------------------------------------------------------------------------------------	
 		//Fase (3)
-			system("cls");
-
-            int choice3;
-            sleep(1);
-            printf("Voce deseja ir para a Fase (3) ?(1 - SIM | 2 - NAO)");
-			scanf("%d", &choice3);
-
-            if(choice3 == 1){
-                system("cls");
-					printf("\t\t\t\t\tCarregando a Fase (3)...");
-					sleep(2);
-            }
-
 			//Declaracao Variaveis Fase(3)
             int x3 = 1;
             int y3 = 1;
@@ -297,11 +355,11 @@ void iniciarJogo(){
             int button2 = 0;
             int spike2 = 3;
 
-			while(choice3 == 1){
-				system("cls");
+				while (choice3 == 1){
+					system("cls");
                 //Printando Mapa (3)
                 printMap3(map3, x3, y3);
-                //Movimento Personagem Fase 1
+                //Movimento Personagem Fase 3
             	char movePlayer3 = getch();
 				switch(movePlayer3){
 					case'w':
@@ -317,7 +375,7 @@ void iniciarJogo(){
 							x3--;
 						break;						
 					case 'd':
-						if(x3<map3_width - 2 && map3[y3][x3+1] != '*' && map3[y3][x3+1] != 'D')
+						if(y3<map3_width - 2 && map3[y3][x3+1] != '*' && map3[y3][x3+1] != 'D')
 							x3++;
 						break;
 					//Interacao Player Chave 
@@ -327,8 +385,7 @@ void iniciarJogo(){
 							map3[y3][x3] = ' ';
 						}else if(map3[y3][x3] == 'O'){
 								button2 = 1;
-								map3[10][17] = ' ';
-								map3[9][7] = ' ';
+								map3[21][4] = ' ';
 						}             
 						break;	
 				}
@@ -350,9 +407,9 @@ void iniciarJogo(){
 						}
 					}
 					//Espinho
-					if(mapa2[y3][x3] == '#'){
+					if(map3[y3][x3] == '#'){
 						spike2--;
-						printf("VOCE CAIU NO ESPINHO VIDAS RESTANTES: %d\n", spike1);
+						printf("VOCE CAIU NO ESPINHO VIDAS RESTANTES: %d\n", spike2);
 						if(spike2 == 0){
 							system("cls");
 							printf("GAME OVER\n");
@@ -361,7 +418,6 @@ void iniciarJogo(){
 							system("cls");
 							sleep(1);
 							menuPrincipal();
-							break;
 						}else{
 							printf("PRESSIONE QUALQUER TECLA PARA CONTINUAR...");
 							getch();
@@ -369,18 +425,32 @@ void iniciarJogo(){
 							y3 = 1;
 						}
 					}
+
+					//Teletransporte
+					if(map3[y3][x3] == map3[39][1]){
+						x3 = 24;
+						y3 = 1; 
+					}else if(map3[y3][x3] == map3[1][23]){
+						x3 = 2;
+						y3 = 39;
+					}
+					if(map3[y3][x3] == map3[15][26]){
+						x3 = 25;
+						y3 = 39;
+					}
+
 					//Finalizacao da Fase (3)
 					if(openDoor3 && map3[y3][x3] == '='){
 						system("cls");
 						printf("\t\t\t\t\tParabens!!! Voce concluiu a Fase (3)!\n");
 						sleep(1);
-					break;
-					}
-						system("cls");
-					menuPrincipal();
-			}
-    	}
 
+					}
+				}
+			}
+void iniciarJogo(){
+        fase3();
+    	}
 //Mapa 1
 void printMap1(char map1[map1_height][map1_width], int px1, int py1){
     int i1, j1;
@@ -396,14 +466,15 @@ void printMap1(char map1[map1_height][map1_width], int px1, int py1){
 	}
 }
 //Mapa 2
-char mapa2[mapa2_height][mapa2_width];
-void printMapa2(char mapa2[mapa2_height][mapa2_width], int px2, int py2){
+void printMapa2(char mapa2[mapa2_height][mapa2_width], int px2, int py2, int mx2, int my2){
     int i2, j2;
     for (i2 = 0; i2 < mapa2_height; i2++){
 	    for (j2 = 0; j2 < mapa2_width; j2++){
 	        if (i2 == py2 && j2 == px2){
 	            printf("&");
-	        }else {
+	        }else if(i2 == mx2 && j2 == my2){
+				printf("X");
+			}else{
 				printf("%c", mapa2[i2][j2]);
 			}
 	    }
