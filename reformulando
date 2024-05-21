@@ -69,5 +69,305 @@
 			}
 			}
         //FUNCAO MENU
-			void menu(){
+			int numero;
+	void menu(){
+			printf("\n\n\t\t\t\t\t\t\t\tMENU PRINCIPAL:\n\n\n\t\t\t\t\t\t\t\t1-JOGAR\n\n\n\t\t\t\t\t\t\t\t2-TUTORIAL\n\n\n\t\t\t\t\t\t\t\t3-SAIR\n");
+			scanf("%d", &numero);
+		switch(numero){
+			case 1:{
+				jogo();
+				break;
+			}case 2:{
+			//Tutorial
+			system("cls");
+			printf("Bem vindos ao tutorial!\nO jogo conta uma aventura onde o objetivo do jogador consiste em passar de 3 fases\n\n");
+			printf("Sistema de vitoria:\npara ganhar o jogador deve se movimentar esquivando-se de espinhos,monstros e obstaculos para pegar uma chave e abrir a porta\n\n");
+			printf("Sistema de derrota:\ncaso o monstro toque no jogador ou caia em um espinho a fase sera reniciada (se reniciada 3 vezes o jogador perde e o jogo volta ao menu principal)\n\n");
+			printf("Controles:\nW:cima\nA:esquerda\nS:baixo\nD:direita\n\n");
+			printf("Simbologia:\n");
+			printf("&:simbolo que representa o jogador\n*:simbolo que representa paredes (o jogador nao consegue atravessa-las)\n");
+			printf("@:simbolo que representa a chave para abrir a porta e finalizar a chave\nD:simbolo que representa uma porta fechada\n");
+			printf("=:simbolo que representa uma porta aberta\n0:simbolo que representa um botao interativo\n#:simbolo que representa um espinho\n");
+			printf(">:simbolo que representa um teletransporte\nX:simbolo que representa o monstro nivel 1\nV:simbolo que representa o monstro nivel 2");
+			printf("Pressione qualquer tecla para voltar ao menu principal");
+			getch();
+			system("cls");
+			menu();	
+			break;
+			}case 3:{
+			//Encerrando o jogo
+			printf("Voce finalizou o jogo, ate a proxima:)");
+			break;
 			}
+		}
+	}
+//Fase 1 
+void fase1(){
+system("cls");
+//iniciar o jogador na posicao
+			int x = 1;
+			int y = 1;
+//variavel para representar a chave
+			int pegouChave = 0;
+			//variavel para representar a porta
+			int portaAberta = 0;
+			
+//Desenho do mapa
+			char mapa [altura][largura] = {
+			"**********",
+			"* *      *",
+			"*   *** D*",
+			"***  ** **",
+			"***  *****",
+			"***  ** **",
+			"***       ",
+			"***  ** **",
+			"***  **@**",
+			"**********"
+			};
+//FASE 1 ---------------------------------------------------------------------------------------------------------------------------------------------------------
+	while(numero == 1){
+			system("cls");
+			//printando o mapa e a localizacao do personagem
+			printmap(mapa, x, y);
+			
+			//criando movimento
+			char move = getch();
+			
+			switch(move){
+			case'w':
+			if(y > 1 && mapa[y-1][x] != '*' && mapa[y-1][x] != 'D')
+			y--;
+			break;
+			case's':
+			if(y<altura - 2 && mapa[y + 1][x] != '*' && mapa[y+1][x] != 'D')
+			y++;
+			break;
+			case'a':
+			if(x > 1 && mapa[y][x-1] != '*' && mapa[y][x - 1] != 'D')
+			x--;
+			break;
+			case 'd':
+			if(x<largura - 2 && mapa[y][x+1] != '*' && mapa[y][x+1] != 'D')
+			x++;
+			break;
+			//pegar a chave
+			case 'i':
+			if (mapa[y][x] == '@')
+			            {
+			
+			pegouChave = 1;
+			            mapa[y][x] = ' ';      
+			            }
+			break;
+			
+			}//abertura da porta
+			if(pegouChave == 1){
+			if( move == 'w' && mapa[y-1][x] == 'D'){
+			portaAberta = 1;
+			mapa[y - 1][x] = '=';
+			}else if(move == 's' && mapa[y+1][x] == 'D'){
+			portaAberta = 1;
+			mapa[y + 1][x] = '=';
+			}else if(move == 'a' && mapa[y][x-1] == 'D'){
+			portaAberta = 1;
+			mapa[y][x- 1] = '=';
+			
+			}else if(move == 'd' && mapa[y][x+1] == 'D'){
+			portaAberta = 1;
+			mapa[y][x + 1] = '=';
+			}}//finalizacao da primeira fase
+			if(portaAberta && mapa[y][x] == '='){
+			system("cls");
+			printf("\t\t\t\t\t\t\t\tParabens!!! Voce concluiu a primeira fase!\n");
+			sleep(1);
+			int choice;
+			printf("Voce deseja ir para a segunda fase? SIM (1)/NAO(2)");
+			scanf("%d", &choice);
+			if(choice == 1){
+			fase2();
+			}else if(choice == 2){
+			menu();
+			}
+			}
+			}
+}
+void fase2(){
+int resposta = 1;
+printf("\t\t\t\t\t\t\t\tCarregando a segunda fase...");
+sleep(2);
+system("cls");
+//Desenho do mapa segunda fase
+			char mapa2[altura2][largura2] = {
+			
+			"********************",
+			"*                 D*",
+			"*  ******** *****##*",
+			"*  ******** *****  *",
+			"*           #      *",
+			"*** *************  *",
+			"*** *************  *",
+			"*** *************  *",
+			"*** *************  *",
+			"*       *          *",
+			"*  #    *          *",
+			"*       *          *",
+			"*    #  *          *",
+			"*       *          *",
+			"* #     *          *",
+			"*     # *          *",
+			"*       *          *",
+			"* #     *          *",
+			"*O      *         @*",
+			"********************"
+			};
+			//variavel do espinho
+			int espinho = 3;
+			//Coordenada Monstro
+			int monstroX = 15;
+			int monstroY = 12;
+
+//iniciar a posicao do jogador
+			int x2 = 1;
+			int y2 = 1;
+			//variavel para representar a chave
+			int pegouChave2 = 0;
+			//variavel para representar a porta
+			int portaAberta2 = 0;
+			//variavel para representar o botao
+			int botao = 0;
+			
+while(respota==1){
+system("cls");
+//printando o mapa
+printmap2(mapa2,x2,y2, monstroX, monstroY);
+//criando movimento
+			char move2 = getch();
+			
+			switch(move2){
+			case'w':
+			{
+			if(y2 > 1 && mapa2[y2-1][x2] != '*' && mapa2[y2-1][x2] != 'D')
+			y2--;
+			break;
+			}
+			case's':
+			{
+			if(y2<altura2 - 2 && mapa2[y2 + 1][x2] != '*' && mapa2[y2+1][x2] != 'D')
+			y2++;
+			break;}
+			case'a':
+			{
+			if(x2 > 1 && mapa2[y2][x2-1] != '*' && mapa2[y2][x2 - 1] != 'D')
+			x2--;
+			break;
+			}
+			case 'd':
+			{
+			if(x2<largura2 - 2 && mapa2[y2][x2+1] != '*' && mapa2[y2][x2+1] != 'D')
+			x2++;
+			break;
+			}
+			//pegar a chave
+			case 'i':
+			if (mapa2[y2][x2] == '@'){
+			pegouChave2 = 1;
+			            mapa2[y2][x2] = ' ';
+			}else if(mapa2[y2][x2] == 'O'){
+			botao = 1;
+			mapa2[12][8] = ' ';
+			}      
+			            break;}
+			//abertura da porta
+			if(pegouChave2 == 1){
+			if( move2 == 'w' && mapa2[y2-1][x2] == 'D'){
+			portaAberta2 = 1;
+			mapa2[y2 - 1][x2] = '=';
+			}else if(move2 == 's' && mapa2[y2+1][x2] == 'D'){
+			portaAberta2 = 1;
+			mapa2[y2 + 1][x2] = '=';
+			}else if(move2 == 'a' && mapa2[y2][x2-1] == 'D'){
+			portaAberta2 = 1;
+			mapa2[y2][x2- 1] = '=';
+			
+			}else if(move2 == 'd' && mapa2[y2][x2+1] == 'D'){
+			portaAberta2 = 1;
+			mapa2[y2][x2 + 1] = '=';
+			}}
+	//espinho
+			if(mapa2[y2][x2] == '#'){
+			espinho--;
+			printf("VOCE CAIU NO ESPINHO VIDAS RESTANTES: %d\n", espinho);
+			if(espinho == 0){
+			system("cls");
+			printf("\t\t\t\t\t\t\t\t\tGAME OVER\n");
+			printf("PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU PRINCIPAL");
+			getch();
+			system("cls");
+			sleep(1);
+			menu();
+			}else{
+			printf("\t\t\t\t\t\t\tPRESSIONE QUALQUER TECLA PARA CONTINUAR...");
+			getch();
+			x2 = 1;
+			y2 = 1;
+			}
+			}
+//monstro
+			
+			int monstro = rand()%4;// 0 cima, 1 baixo, 2 esquerda, 3 direita
+			
+			switch(monstro){
+			case 0:
+			{
+			if(monstroY > 1 && mapa2[monstroY-1][monstroX] != '*' && mapa2[monstroY-1][monstroX] != 'D')
+			monstroY--;
+			break;
+			}
+			case 1:
+			{
+			if(monstroY<altura2 - 2 && mapa2[monstroY + 1][monstroX] != '*' && mapa2[monstroY+1][monstroX] != 'D')
+			monstroY++;
+			break;
+			}
+			case 2:
+			{
+			if(monstroX > 1 && mapa2[monstroY][monstroX-1] != '*' && mapa2[monstroY][monstroX - 1] != 'D')
+			monstroX--;
+			break;
+			}
+			case 3:
+			{
+			if(monstroX<largura2 - 2 && mapa2[monstroY][monstroX+1] != '*' && mapa2[monstroY][monstroX+1] != 'D')
+			monstroX++;
+			break;
+			}
+			
+			}
+			if(y2 == monstroX && x2 == monstroY ){
+			system("cls");
+			printf("\t\t\t\t\t\t\t\t\tVOCE MORREU PARA O MONSTRO :/");
+			menu();
+			}
+//Finalizacao da segunda fase
+			if(portaAberta2 && mapa2[y2][x2] == '='){
+			system("cls");
+			printf("\t\t\t\t\t\t\tParabens!!! Voce concluiu a segunda fase!\n");
+			sleep(1);
+			system("cls");
+			sleep(1);
+			int choice
+			printf("\t\t\t\t\t\t\tVoce deseja jogar a terceira fase? Sim(1)/Nao(2):");
+			scanf("%d", &choice);
+			if(choice==1){
+			fase3();
+			}else if(choice==2){
+				menu();
+			}
+				
+			}}
+}
+void fase3(){
+
+}
+}
