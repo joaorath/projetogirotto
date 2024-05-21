@@ -1,0 +1,73 @@
+#include <stdio.h>
+			#include <stdlib.h>
+			#include <time.h>
+			
+			#define altura 10
+			#define largura 10
+			
+			#define altura2 20
+			#define largura2 20
+			
+			#define altura3 40
+			#define largura3 40
+			
+			
+			
+			//Funcao para imprimir o mapa
+			void printmap(char mapa[altura][largura], int px, int py){
+			system("cls");
+			
+			    int i, j;
+			
+			    for (i = 0; i < altura; i++) {
+			        for (j = 0; j < largura; j++) {
+			            if (i == py && j == px) {
+			                printf("&");
+			            } else {
+			                printf("%c", mapa[i][j]);
+			            }
+			        }
+			        printf("\n");
+			    }
+			}
+			//Funcao para imprimir o segundo mapa
+			void printmap2(char mapa2[altura2][largura2], int px2, int py2, int monstroY, int monstroX){
+			system("cls");
+			    int i2, j2;
+			
+			    for (i2 = 0; i2 < altura2; i2++) {
+			        for (j2 = 0; j2 < largura2; j2++) {
+			            if (i2 == py2 && j2 == px2) {
+			                printf("&");
+			            }else if(i2 == monstroY && j2 == monstroX ){
+			            printf("X");
+			} else {
+			                printf("%c", mapa2[i2][j2]);
+			            }
+			        }
+			        printf("\n");
+			    }
+			}
+			
+			//FUNCAO MAPA3------------------------------------------------------------------------------------------------------
+			void printmap3(char mapa3[altura3][largura3], int px3, int py3, int monstroX2, int monstroY2, int seguidorX, int seguidorY){
+			system("cls");
+			int i3,j3;
+			for(i3=0;i3<altura3;i3++){
+			for(j3=0;j3<largura3;j3++){
+			if(i3 == py3 && j3 == px3){
+			printf("&");
+			}else if(i3 == monstroY2 && j3 == monstroX2){
+			printf("X");
+			}else if(i3 == seguidorY && j3 == seguidorX){
+			printf("V");
+			}else {
+			printf("%c", mapa3[i3][j3]);
+			}
+			}
+			printf("\n");
+			}
+			}
+        //FUNCAO MENU
+			void menu(){
+			}
