@@ -46,3 +46,9 @@ Use os elementos a seu favor: Botões, teleportes e espinhos podem ser usados pa
 Cuidado com os monstros: Evite contato com eles a todo custo.
 Não desista: As fases podem ser desafiadoras, mas com persistência você vencerá.
 Mergulhe em Dungeon Crawler e prepare-se para uma aventura inesquecível!
+
+Membros:
+-Pedro Paulo de Magalahes Bezerra Filho
+-Joao Vitor Rath de Souza Franco
+-Thalles de Alves
+-Yuri Monteiro Alencar Aguiar
