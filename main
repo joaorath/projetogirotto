@@ -590,7 +590,7 @@ void fase3()
 			break;
 		}
 		// Logica Porta
-		if (openDoor3 == 1)
+		if (getKey3 == 1)
 		{
 			if (move3 == 'w' && map3[y3 - 1][x3] == 'D')
 			{
