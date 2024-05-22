@@ -181,7 +181,7 @@ system("cls");
 			//variavel para representar o botao
 			int botao = 0;
 			
-while(respota==1){
+while(resposta==1){
 system("cls");
 //printando o mapa
 printmap2(mapa2,x2,y2, monstroX, monstroY);
@@ -300,7 +300,7 @@ printmap2(mapa2,x2,y2, monstroX, monstroY);
 			sleep(1);
 			system("cls");
 			sleep(1);
-			int choice
+			int choice;
 			printf("\t\t\t\t\t\t\tVoce deseja jogar a terceira fase? Sim(1)/Nao(2):");
 			scanf("%d", &choice);
 			if(choice==1){
@@ -368,11 +368,6 @@ char mapa3[altura3][largura3] = {
 //coordenadas do segundo monstro
 			int seguidorX = 1;
 			int seguidorY = 1;
-//variavel do teletransporte
-			int teleX = 38;
-			int teleY = 34;
-			int teleX2 = 24;
-			int teleY2 = 38;
 			
 //posição jogador
 			int x3 = 3;
@@ -447,7 +442,7 @@ system("cls");
 			mapa3[y3 + 1][x3] = '=';
 			}else if(move3 == 'a' && mapa3[y3][x3-1] == 'D'){
 			portaAberta3 = 1;
-			mapa2[y3][x3- 1] = '=';
+			mapa3[y3][x3- 1] = '=';
 			}else if(move3 == 'd' && mapa3[y3][x3+1] == 'D'){
 			portaAberta3 = 1;
 			mapa3[y3][x3 + 1] = '=';
@@ -541,7 +536,7 @@ system("cls");
 }
 }
 void jogo(){
-	fase3();
+	fase1();
 }
 //Funcao para imprimir o mapa
 			void printmap(char mapa[altura][largura], int px, int py){
@@ -564,7 +559,6 @@ void jogo(){
 			void printmap2(char mapa2[altura2][largura2], int px2, int py2, int monstroY, int monstroX){
 			system("cls");
 			    int i2, j2;
-			
 			    for (i2 = 0; i2 < altura2; i2++) {
 			        for (j2 = 0; j2 < largura2; j2++) {
 			            if (i2 == py2 && j2 == px2) {
@@ -578,27 +572,28 @@ void jogo(){
 			        printf("\n");
 			    }
 			}
+
 //FUNCAO MAPA3------------------------------------------------------------------------------------------------------
 			void printmap3(char mapa3[altura3][largura3], int px3, int py3, int monstroX2, int monstroY2, int seguidorX, int seguidorY){
-			system("cls");
-			int i3,j3;
-			for(i3=0;i3<altura3;i3++){
-			for(j3=0;j3<largura3;j3++){
-			if(i3 == py3 && j3 == px3){
-			printf("&");
-			}else if(i3 == monstroY2 && j3 == monstroX2){
-			printf("X");
-			}else if(i3 == seguidorY && j3 == seguidorX){
-			printf("V");
-			}else {
-			printf("%c", mapa3[i3][j3]);
+                system("cls");
+                int i3,j3;
+                for(i3=0;i3<altura3;i3++){
+                    for(j3=0;j3<largura3;j3++){
+                        if(i3 == py3 && j3 == px3){
+                        printf("&");
+                        }else if(i3 == monstroY2 && j3 == monstroX2){
+                        printf("X");
+                        }else if(i3 == seguidorY && j3 == seguidorX){
+                        printf("V");
+                        }else {
+                        printf("%c", mapa3[i3][j3]);
+                        }
+                    }
+                    printf("\n");
+                }
 			}
-			}
-			printf("\n");
-			}
-			}
+
 int main(){
-//menu
-menu();
-}
+    //menu
+    menu();
 }
