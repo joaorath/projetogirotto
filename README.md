@@ -1,11 +1,11 @@
 Dungeon Crawler: Desvende os Segredos Perdidos
 História:
 
-Em um reino distante, o guardião tenta proteger seus aliados e seu reino, para isso, tem que concluir três missões muito difíceis, onde inclui-se o desvendamento e a procura pela a chave secreta onde está escondida dentro do reino. Para isso tem que enfrentar monstros, passar por teletransporte e até mesmo pelos tão desafiadores espinhos. Para isso, ele precisa se aventurar em vários desafios e achar as tão sonhadas chaves que abrem qualquer porta e assim, livrar seu reino de todo o mal. Você está pronto para embarcar nesta jornada épica?
+Em um reino distante, o guardião tenta proteger seus aliados e seu reino, para isso, tem que concluir três missões muito difíceis, onde inclui-se o desvendamento e a procura pela a chave secreta onde está escondida dentro das masmorras. Para isso tem que enfrentar monstros, passar por portais e até mesmo pelos tão desafiadores espinhos. Para isso, ele precisa se aventurar em vários desafios e achar as tão sonhadas chaves que abrem qualquer porta e assim, livrar seu reino de todo o mal. Você está pronto para embarcar nesta jornada épica?
 
 Objetivo:
 
-Em Dungeon Crawler, seu desafio é superar três fases desafiadoras, desvendando puzzles e enfrentando perigos para chegar ao coração da Fortaleza de Obsidiana e conquistar o lendário Amuleto da Eternidade.
+No jogo, seu desafio é superar três fases desafiadoras, enfrentando perigos para salvar seu reino conquistar o lendário Amuleto da Eternidade.
 
 Como Jogar:
 
