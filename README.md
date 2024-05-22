@@ -1,7 +1,7 @@
 Dungeon Crawler: Desvende os Segredos Perdidos
 História:
 
-Em um reino distante, coberto por brumas e mistérios, ergue-se a imponente Fortaleza de Obsidiana, lar de segredos ancestrais e tesouros inimagináveis. Dizem que apenas os mais bravos e perspicazes aventureiros podem desvendar seus enigmas e conquistar seus tesouros. Você está pronto para embarcar nesta jornada épica?
+Em um reino distante, o guardião tenta proteger seus aliados e seu reino, para isso, tem que concluir três missões muito difíceis, onde inclui-se o desvendamento e a procura pela a chave secreta onde está escondida dentro do reino. Para isso tem que enfrentar monstros, passar por teletransporte e até mesmo pelos tão desafiadores espinhos. Para isso, ele precisa se aventurar em vários desafios e achar as tão sonhadas chaves que abrem qualquer porta e assim, livrar seu reino de todo o mal. Você está pronto para embarcar nesta jornada épica?
 
 Objetivo:
 
